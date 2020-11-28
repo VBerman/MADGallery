@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MADGallery.Page1"
+             x:Name="ThisPage" NavigationPage.HasNavigationBar="False">
+    <ContentPage.Content>
+        <Grid BindingContext="{Binding Source={x:Reference ThisPage}}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*"></RowDefinition>
+                <RowDefinition Height="7.5*"></RowDefinition>
+                <RowDefinition Height="1.5*"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Image Source="{Binding  Path=Source}" Aspect="AspectFill" Grid.Row="0" Grid.RowSpan="3"></Image>
+            <!--fit-->
+            <!--<Frame Grid.Row=""></Frame>-->
+            <Grid BackgroundColor="Black" Opacity="0.8" Grid.Row="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="8*"></ColumnDefinition>
+                    <ColumnDefinition Width="2*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Label TextColor="White" Opacity="1" VerticalOptions="Center" Margin="10,0,0,0" Grid.Column="0" Text="{Binding Path=IdName}"></Label>
+                <Image Source="Rotate.png" Grid.Column="1" WidthRequest="30" HeightRequest="37" HorizontalOptions="End" Margin="0,0,30,0" VerticalOptions="Center">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"></TapGestureRecognizer>
+                    </Image.GestureRecognizers>
+                </Image>
+            </Grid>
+            <Frame CornerRadius="50" WidthRequest="25" HeightRequest="25" VerticalOptions="Center" HorizontalOptions="End" Opacity="0.8" Margin="0,0,20,0" BackgroundColor="Black" Grid.Row="2">
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped_1">
+                        
+                    </TapGestureRecognizer>
+                </Frame.GestureRecognizers>
+                <Image Source="Save.png" Opacity="1" WidthRequest="15" HeightRequest="20" VerticalOptions="Center"></Image>
+            </Frame>
+        </Grid>
+        <!--//contentpage-->
+
+    </ContentPage.Content>
+</ContentPage>

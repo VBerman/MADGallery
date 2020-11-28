@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Application xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MADGallery.App">
+    <Application.Resources>
+
+        <Style TargetType="Image">
+            <Setter Property="WidthRequest" Value="100"></Setter>
+            <Setter Property="HeightRequest" Value="100"></Setter>
+            <Setter Property="MinimumWidthRequest" Value="100"></Setter>
+            <Setter Property="MinimumHeightRequest" Value="100"></Setter>
+            <Setter Property="Aspect" Value="Fill"></Setter>
+        </Style>
+        <StyleSheet Source="Styles.css"/>
+    </Application.Resources>
+</Application>

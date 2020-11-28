@@ -1,0 +1,107 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MADGallery.MainPage"
+             xmlns:android="http://schemas.android.com/apk/res/android"
+            x:Name="ThisPage" NavigationPage.HasNavigationBar="False">
+    <!--<ContentPage.Resources>
+        <Style TargetType="Image" Class=""></Style>
+    </ContentPage.Resources>-->
+    
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="9*"></RowDefinition>
+            <RowDefinition Height="1*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*"></ColumnDefinition>
+            <ColumnDefinition Width="8*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <CollectionView x:Name="CollectionViewItem" Margin="10,0,10,0" Scrolled="CollectionViewItem_Scrolled" Grid.Row="0" Grid.RowSpan="2" Grid.Column="0" Grid.ColumnSpan="2">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="20"></RowDefinition>
+                            <!--1-->
+                            <RowDefinition Height="33.3"></RowDefinition> 
+                            <RowDefinition Height="43.3"></RowDefinition>
+                            <RowDefinition Height="22.3"></RowDefinition>
+                            <!--2-->
+                            <RowDefinition Height="33.3"></RowDefinition>
+                            <RowDefinition Height="43.3"></RowDefinition>
+                            <RowDefinition Height="22.3"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="100"></ColumnDefinition>
+                            <ColumnDefinition Width="100"></ColumnDefinition>
+                            <ColumnDefinition Width="100"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        
+                        <Label Text="{Binding id}" Grid.Row="0" Grid.Column="0" FontAttributes="Bold" FontSize="18"></Label>
+                        
+                        <!--image-->
+                        <Image Source="{Binding src.original}" Grid.Row="1" Grid.RowSpan="3" Grid.Column="0">
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="ImageTap"></TapGestureRecognizer>
+                            </Image.GestureRecognizers>
+                        </Image>
+                        <Image Source="{Binding src.large}" Grid.Row="1" Grid.RowSpan="3" Grid.Column="1">
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="ImageTap"></TapGestureRecognizer>
+                            </Image.GestureRecognizers>
+                        </Image>
+                        <Image Source="{Binding src.small}" Grid.Row="1" Grid.RowSpan="3" Grid.Column="2">
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="ImageTap"></TapGestureRecognizer>
+                            </Image.GestureRecognizers>
+                        </Image>
+                        <Image Source="{Binding src.portrait}" Grid.Row="4" Grid.RowSpan="3" Grid.Column="0">
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="ImageTap"></TapGestureRecognizer>
+                            </Image.GestureRecognizers>
+                        </Image>
+                        <Image Source="{Binding src.tiny}" Grid.Row="4" Grid.RowSpan="3" Grid.Column="1">
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="ImageTap"></TapGestureRecognizer>
+                            </Image.GestureRecognizers>
+                        </Image>
+                        
+                        <!--checkbox-->
+                        <CheckBox IsVisible="{Binding Source={x:Reference ThisPage}, Path=VisibleCheckBox}" IsChecked="{Binding srcBool.original}" Opacity="0.7" Grid.Row="1" Grid.Column="0" CheckedChanged="CheckBox_CheckedChanged"></CheckBox>
+                        <CheckBox IsVisible="{Binding Source={x:Reference ThisPage}, Path=VisibleCheckBox}" IsChecked="{Binding srcBool.large}" Opacity="0.7" Grid.Row="1" Grid.Column="1" CheckedChanged="CheckBox_CheckedChanged"></CheckBox>
+                        <CheckBox IsVisible="{Binding Source={x:Reference ThisPage}, Path=VisibleCheckBox}" IsChecked="{Binding srcBool.small}" Opacity="0.7" Grid.Row="1" Grid.Column="2" CheckedChanged="CheckBox_CheckedChanged"></CheckBox>
+                        <CheckBox IsVisible="{Binding Source={x:Reference ThisPage}, Path=VisibleCheckBox}" IsChecked="{Binding srcBool.portrait}" Opacity="0.7" Grid.Row="4" Grid.Column="0" CheckedChanged="CheckBox_CheckedChanged"></CheckBox>
+                        <CheckBox IsVisible="{Binding Source={x:Reference ThisPage}, Path=VisibleCheckBox}" IsChecked="{Binding srcBool.tiny}" Opacity="0.7" Grid.Row="4" Grid.Column="1" CheckedChanged="CheckBox_CheckedChanged"></CheckBox>
+                        
+                        <!--label-->
+                        <Label BackgroundColor="White" Opacity="0.67" Grid.Row="3" Grid.Column="0" Padding="5, 0, 0, 0">original</Label>
+                        <Label BackgroundColor="White" Opacity="0.67" Grid.Row="3" Grid.Column="1" Padding="5, 0, 0, 0">large</Label>
+                        <Label BackgroundColor="White" Opacity="0.67" Grid.Row="3" Grid.Column="2" Padding="5, 0, 0, 0">small</Label>
+                        <Label BackgroundColor="White" Opacity="0.67" Grid.Row="6" Grid.Column="0" Padding="5, 0, 0, 0">small-x2</Label>
+                        <Label BackgroundColor="White" Opacity="0.67" Grid.Row="6" Grid.Column="1" Padding="5, 0, 0, 0">nano</Label>
+                        
+                        
+                        
+
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+           
+        </CollectionView>
+        <StackLayout Grid.Column="0" Grid.Row="1">
+            <StackLayout.GestureRecognizers>
+                <TapGestureRecognizer Tapped="OnTapped"></TapGestureRecognizer>
+            </StackLayout.GestureRecognizers>
+            <Frame BackgroundColor="White" HasShadow="True" VerticalOptions="Center" HorizontalOptions="Center" CornerRadius="50" WidthRequest="20" HeightRequest="20">
+                <Frame BackgroundColor="Red" WidthRequest="10" HeightRequest="10">
+
+                    <Label x:Name="CountChooseItem" TextColor="Black" FontSize="10" VerticalTextAlignment="Center" VerticalOptions="Center" HorizontalOptions="Center">10</Label>
+                </Frame>
+            </Frame>
+        </StackLayout>
+
+    </Grid>
+
+</ContentPage>
